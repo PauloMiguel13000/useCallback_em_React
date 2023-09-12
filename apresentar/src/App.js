@@ -1,52 +1,42 @@
 
-import React from 'react';
+import React, {Component} from 'react';
 
-const Equipe = (props) =>{
-    return(
-        <div>
-           <Sobre nome={props.nome} cargo={props.cargo} 
-           idade={props.idade}/>
-
-           <Social fb={props.facebook} lk={props.linkedin}  ig={props.instagram}/>
+class Equipe extends Component{
+    render(){
+        return(
+            <div>
+           <Sobre nome={this.props.nome} cargo={this.props.cargo}
+           idade={this.props.idade}></Sobre>
            
-           <hr/>
-        </div>
-    );
-}
-const Social = (props) => {
-    return(
-        <div className='engloba'>
-            <div className='alinhar'>
-            <a href={props.lk}>Linkedin </a>
-
-         
+           <hr></hr>
             </div>
-        </div>
-    );
+            
+            );
+    }
 }
 
-const Sobre = (props) => {
-    return(
-        <div>
-        <h2>Ola sou o(a) {props.nome}</h2> 
-        <h2>Tenho {props.idade} anos</h2>
-        <h2>e sou {props.cargo}</h2>    
-        </div>
-    );
+
+
+class Sobre extends Component{
+    render(){
+        return(
+            
+            <div><h2>Ola, sou o {this.props.nome}</h2>
+            <h3>Meu cargo é {this.props.cargo}</h3>
+            <h3>Eu tenho {this.props.idade} anos</h3>
+            </div>
+            
+        );
+    }
 }
 
 function App(){
 return(
 <div>
- <h1>Conheca nossa equipe:</h1>
- 
-    <Equipe nome="Miguel" cargo="Programador" idade= "22" 
-    facebook="http://google.com" linkedin="https://br.linkedin.com/in/paulo-miguel-98828617a?trk=people-guest_people_search-card" instagram="http://google.com"/>
-    <Equipe nome="Jonatan" cargo="Designer" idade="25" 
-  facebook="http://google.com" linkedin="https://br.linkedin.com/in/paulo-miguel-98828617a?trk=people-guest_people_search-card" instagram="http://google.com"/>
-    <Equipe nome="Joaquim" cargo="Engenheiro" idade="27" 
-   facebook="http://google.com" linkedin="https://br.linkedin.com/in/paulo-miguel-98828617a?trk=people-guest_people_search-card" instagram="http://google.com"/>
- </div>
+ <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
+ <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
+ <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
+    </div>
 
 ); 
 }
