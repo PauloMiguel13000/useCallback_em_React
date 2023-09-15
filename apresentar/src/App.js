@@ -1,47 +1,46 @@
-
 import React, {Component} from 'react';
 
-class Equipe extends Component{
+
+class App extends Component {
+    constructor(props){
+        super(props);
+        this.state ={
+            nome: "Miguel",
+            contador: 0,
+        }
+        this.aumentar = this.aumentar.bind(this);
+        this.diminuir = this.diminuir.bind(this);
+    }
+    diminuir(){
+        let state = this.state;
+        if(state.contador === 0){
+            alert('igual a zero!')
+        }
+        state.contador -=1;
+        state.nome = 'diminuindo'
+        this.setState(state);
+    }
+    aumentar(){
+        let state = this.state;
+        state.contador +=1;
+        state.nome = 'Aumentando'
+  this.setState(state)
+    }
     render(){
+       
         return(
+
             <div>
-           <Sobre nome={this.props.nome} cargo={this.props.cargo}
-           idade={this.props.idade}></Sobre>
-           
-           <hr></hr>
+                <h1>Contador</h1>
+                {this.state.nome}
+                <h3>
+                    
+                    <button onClick={this.diminuir}>-</button>{this.state.contador}
+                <button onClick={this.aumentar}>+</button></h3> 
+
             </div>
-            
-            );
+        )
     }
-}
-
-
-
-class Sobre extends Component{
-    render(){
-        return(
-            
-            <div><h2>Ola, sou o {this.props.nome}</h2>
-            <h3>Meu cargo é {this.props.cargo}</h3>
-            <h3>Eu tenho {this.props.idade} anos</h3>
-            </div>
-            
-        );
-    }
-}
-
-function App(){
-return(
-<div>
- <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
- <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
- <Equipe nome="Miguel" cargo="Dev" idade="22"></Equipe>
-    </div>
-
-); 
 }
 
 export default App;
-
- 
-
