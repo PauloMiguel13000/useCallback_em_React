@@ -7,21 +7,32 @@ class Membro extends Component {
     constructor(props){
         super(props);
         this.state={
-            nome: props.nome
+        status: false
         };
+        this.sair = this.sair.bind(this);
         this.entrar = this.entrar.bind(this);
     }
 
-    entrar(nome){
-        this.setState({nome: nome})
+    sair(){
+        this.setState({status: false})
+    }
+    entrar(){
+        this.setState({status: true})
     }
     render(){
         return(
-            <div><h2>Bem vindo {this.state.nome}</h2>
-             <button onClick={() => this.entrar('Miguel')}>Entrar como Sistema</button>
-             <button onClick={() => this.setState({nome:''})}>Sair</button>
+        <div>
+            
+            {this.state.status ? 
+            <div>
+                <h2>Bem vindo ao sistema</h2>
+                <button onClick={this.sair}>Sair</button>
+            </div> :
+            <div><h2>Ola, logue</h2>
+            <button onClick={this.entrar}>Entrar no sistema</button>
             </div>
-       
+        }
+        </div>
             );
     }
 }
