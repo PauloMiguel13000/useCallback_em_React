@@ -1,50 +1,29 @@
 /* eslint-disable no-undef */
-import React, {Component} from 'react';
-import './estilo.css'
-class App extends Component{
-    constructor(props){
-        super(props);
-        this.state = {textoFrase: ''};
+import React, {useState} from 'react';
 
-        this.quebraBiscoito = this.quebraBiscoito.bind(this);
+function App(){
 
-        this.frases = ['Siga os bons e aprenda com eles.',
-        'O bom-senso vale mais do que muito conhecimento.', 
-        'O riso é a menor distância entre duas pessoas.', 
-        'Deixe de lado as preocupações e seja feliz.',
-        'Realize o óbvio, pense no improvável e conquiste o impossível.',
-        'Acredite em milagres, mas não dependa deles.',
-        'A maior barreira para o sucesso é o medo do fracasso.'];
-    }
-    quebraBiscoito(){
-        let state = this.state;
+    const [tarefas, setTarefas] = useState(['Pagar a contar de luz',
+'Estudar React Hooks']);
+const [input, setInput] = useState('');
+function handleAdd(){
+setTarefas([...tarefas, input]);
+setInput('');
 
-        let numeroAleatorio = Math.floor(Math.random() * this.frases.length);
-        state.textoFrase = '"' + this.frases[numeroAleatorio] + '"';
-        this.setState(state);
-
-    }
-    render(){
-return(
-    <div className="container">
-        <img src={require('./assets/biscoito.png')} className="img"/>
-        <Botao nome="Abrir biscoito" acaoBtn={this.quebraBiscoito}></Botao>
-        <h3 className='textoFrase'>{this.state.textoFrase}</h3>
-        
-    </div>
-);
-
-    }
 }
-class Botao extends Component{
-    render(){
-        return(
-            <div>
-                <button onClick={this.props.acaoBtn}>{this.props.nome}</button>
 
-            </div>
-        );
-    }
-    r
+    return(
+        <div>
+            <ul>
+                {tarefas.map(tarefa => (
+                    <li key={tarefa}>{tarefa}</li>
+                ))}
+            </ul>
+            <input type="text" value={input} onChange={e => setInput(e.target.value)}></input>
+           <button type='button' onClick={handleAdd}>Add</button>
+        </div>
+
+    );
 }
+
 export default App;
